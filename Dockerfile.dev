@@ -1,0 +1,13 @@
+FROM node:lts-alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+## do we really need this anymore? no. but! we might eventually
+## get rid of using docker compose so we might want to leave it for
+## the future
+COPY . .
+
+CMD ["npm", "run", "start"]
